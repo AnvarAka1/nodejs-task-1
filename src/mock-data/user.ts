@@ -1,4 +1,11 @@
-export const users = [
+export type UserType = {
+  id: number
+  fullName: string
+  age: number
+  type: string
+}
+
+export const users: UserType[] = [
   { id: 1, fullName: 'Ivan Ivanov', age: 17, type: 'student' },
   { id: 2, fullName: 'Aleksey Aleksandrovich', age: 14, type: 'developer' },
   { id: 3, fullName: 'Azamat Karimov', age: 36, type: 'manager' },

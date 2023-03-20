@@ -1,4 +1,5 @@
-import { userController } from '../controllers'
+import { homeController, userListController } from '../controllers'
+import { IncomingMessage, ServerResponse } from 'http'
 
 type Args = {
   queryParams: Record<string, string>
@@ -6,16 +7,19 @@ type Args = {
 
 type RouteType = {
   pathname: string
-  controller: (args: Args) => void
+  controller: (req: IncomingMessage, res: ServerResponse, args: Args) => unknown
+  method: string
 }
 
 export const routes: RouteType[] = [
   {
     pathname: '/',
-    controller: () => {}
+    controller: homeController,
+    method: 'GET'
   },
   {
     pathname: '/users',
-    controller: userController
+    controller: userListController,
+    method: 'GET'
   }
 ]
