@@ -1,10 +1,11 @@
 import { sendError } from './utils/error'
 import http from 'http'
+import * as process from 'process'
 
 const { handleRoutes } = require('./router')
 
 const HOSTNAME = '127.0.0.1'
-const PORT = 3000
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000
 
 const server = http.createServer((req, res) => {
   try {
@@ -21,7 +22,6 @@ const server = http.createServer((req, res) => {
   
   return sendError(res)
 })
-
 
 
 server.listen(PORT, HOSTNAME, () => {
